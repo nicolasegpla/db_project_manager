@@ -1,0 +1,37 @@
+# --- Python bytecode / cachés ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyo
+
+# --- Entornos virtuales ---
+venv/
+.env/
+.env.bak/
+.venv/
+env/
+
+# --- Variables de entorno / secretos ---
+.env
+.env.*
+*.env
+
+# --- Logs ---
+*.log
+
+# --- Archivos de volcado de BD (backups locales) ---
+*.sql
+*.dump
+*.bak
+*.gz
+
+# --- Configuración de editores/IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Archivos del sistema operativo ---
+.DS_Store
+Thumbs.db
