@@ -10,7 +10,7 @@ class Usuario(Base):
     nombre = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False, index=True)
     password_hash = Column(String(255), nullable=False)
-    rol = Column(String(50), default="cobrador")  # admin, contador, cobrador
+    rol = Column(String(50), default="contributor")  # admin, contador, cobrador
     activo = Column(Boolean, default=True)
     fecha_registro = Column(DateTime(timezone=True), server_default=func.now())
 

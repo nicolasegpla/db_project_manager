@@ -1,8 +1,8 @@
 """initial migration
 
-Revision ID: a50b1acac1c1
-Revises: cf31b9ce3815
-Create Date: 2025-12-11 18:04:11.332685
+Revision ID: 61682842595e
+Revises: 
+Create Date: 2025-12-17 17:03:11.506638
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'a50b1acac1c1'
-down_revision: Union[str, Sequence[str], None] = 'cf31b9ce3815'
+revision: str = '61682842595e'
+down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -24,25 +24,15 @@ def upgrade() -> None:
     op.create_table('empresas',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('nombre', sa.String(length=255), nullable=False),
-    sa.Column('identificacion_tributaria', sa.String(length=100), nullable=False),
     sa.Column('email_contacto', sa.String(length=255), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('telefono_contacto', sa.String(length=50), nullable=True),
-    sa.Column('direccion', sa.String(length=255), nullable=True),
-    sa.Column('pais', sa.String(length=100), nullable=True),
-    sa.Column('ciudad', sa.String(length=100), nullable=True),
     sa.Column('fecha_registro', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
-    sa.Column('whatsapp_phone_number_id', sa.String(length=100), nullable=True),
-    sa.Column('whatsapp_business_id', sa.String(length=100), nullable=True),
-    sa.Column('whatsapp_access_token', sa.String(length=500), nullable=True),
-    sa.Column('whatsapp_habilitado', sa.Boolean(), nullable=True),
-    sa.Column('whatsapp_conectado_en', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('tipo_suscripcion', sa.String(length=50), nullable=True),
     sa.Column('activa', sa.Boolean(), nullable=True),
     sa.Column('creada_en', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.Column('actualizada_en', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email_contacto'),
-    sa.UniqueConstraint('identificacion_tributaria')
+    sa.UniqueConstraint('email_contacto')
     )
     op.create_index(op.f('ix_empresas_id'), 'empresas', ['id'], unique=False)
     op.create_table('proyectos',
