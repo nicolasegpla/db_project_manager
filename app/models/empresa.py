@@ -11,7 +11,8 @@ class Empresa(Base):
     email_contacto = Column(String(255), unique=True, nullable=True)
     hashed_password = Column(String(255), nullable=False)
     fecha_registro = Column(DateTime(timezone=True), server_default=func.now()) 
-    tipo_suscripcion = Column(String(50), default="gratuita")
+    tipo_suscripcion = Column(String(50), default="basic")
+    roll = Column(String(50), default="superUser")
 
     activa = Column(Boolean, default=True)
     creada_en = Column(DateTime(timezone=True), server_default=func.now())
